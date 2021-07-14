@@ -1,0 +1,53 @@
+.Pokecard{
+    background-color: lightgrey;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 7px 7px 10px -5px rgba(0,0,0,.56);
+    &:hover{
+        .Pokecard--image{
+            max-width: 200px;
+        }
+    }
+    &--fire{
+        background-color: lightsalmon;
+    }
+    &--water{
+        background-color: lightskyblue;
+    }
+    &--fly{
+        background-color: lightgrey;
+    }
+    &--electric{
+        background-color: lightyellow;
+    }
+    &--poison, &--ghost{
+        background-color: lavender;
+    }
+    &--bug, &--grass{
+        background-color: lightgreen;
+    }
+    &--image{
+        width: 100%;
+        max-width: 150px;
+        transition: max-width .5s ease;
+        
+    }
+    &--name{
+        font-size: 26px;
+        font-family: Arial;
+        margin: 0;
+        padding-bottom: 12px;
+    }
+    &--exp{
+        font-size: 16px;
+        font-family: Arial;
+        margin: 0;
+    }
+    &--type{
+        &-fire{
+            content: '🔥'
+        }
+
+    }
+}

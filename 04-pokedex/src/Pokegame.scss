@@ -1,0 +1,19 @@
+.Pokegame{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    &--hand{
+        padding: 60px 40px ;
+        &:not(:first-child){
+            margin-top: 50px;
+        }
+    }
+    &--winner{
+        &-false{
+                background-color: lightsteelblue;
+        }
+        &-true{
+                background-color: lightseagreen;
+            
+        }
+    }
+}
