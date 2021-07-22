@@ -4,21 +4,35 @@ import './RollDice.scss'
 
 
 export default class RollDice extends Component {
+    static defaultProps = {
+        text: ['one', 'two', 'three', 'four', 'five', 'six']
+    }
     state = {
-        dicea: 1,
-        diceb: 5,
-        ctaText: 'Roll!'
+        dicea: 'one',
+        diceb: 'five',
+        ctaText: 'Roll!', 
+        rolling: false
     }
 
     generateRandomNum  = () => {
-        return Math.floor(Math.random() * 6) + 1
+        return Math.floor(Math.random() * this.props.text.length)
+    }
+
+    generateTextNumber  = () => {
+        return this.props.text[this.generateRandomNum()]
     }
 
     newDice = (e) => {
         this.setState({
-            dicea: this.generateRandomNum(),
-            diceb: this.generateRandomNum(),
+            dicea: this.generateTextNumber(),
+            diceb: this.generateTextNumber(),
+            rolling: true
         })
+        setTimeout(() => {
+            this.setState({
+                rolling:false
+            })
+        }, 1000);
     }
 
 
@@ -26,9 +40,11 @@ export default class RollDice extends Component {
     render() {
         return (
             <div className="RollDice">
-                <Dice number={this.state.dicea} />
-                <Dice number={this.state.diceb} />
-                <button onClick={this.newDice}>{this.state.ctaText}</button>
+                <Dice number={this.state.dicea} rolling={this.state.rolling}/>
+                <Dice number={this.state.diceb} rolling={this.state.rolling}/>
+                <button onClick={this.newDice} disabled={this.state.rolling}>
+                    {this.state.rolling ? "Rolling..." : this.state.ctaText}
+                </button>
             </div>
         )
     }
